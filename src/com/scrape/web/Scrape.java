@@ -5,31 +5,49 @@
  */
 package com.scrape.web;
 import com.scrape.exceptions.*;
-import java.lang.AutoCloseable;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
  *
  * @author madrid-linux
  */
-public class Scrape extends AParse  implements AutoCloseable{
+public class Scrape extends AParse{
+    static String PATH_OUT_WRITE_FILE = "/YOUR_PATH_WHERE_THE FILE_IS_SAVED/";      
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
+       String pageName = "wiki_Modular_programming.html"; 
+       Scrape scrape = new Scrape();
+       String content = scrape.getContent("https://en.wikipedia.org/wiki/Modular_programming");
+       if(!content.equals("")){
+        scrape.save(PATH_OUT_WRITE_FILE+pageName, content);
+       }
+       System.out.println(content);
     }
-    
     /**
-     * close the input file
-     */
-    @Override
-    public void close(){
-      try {
-            stop(); 
-            throw new ScrapeException("Stop Final");
-        } catch (ScrapeException ex) {
-            Logger.getLogger(Scrape.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+     * save the content to a file
+     * 
+     * @param savefilePath
+     * @param content
+   */
+ @Override
+  public void save(String savefilePath,String content){
+     try {
+         File fileOut = new File(savefilePath);
+         fileOut.delete();
+         
+         try (FileWriter fw = new FileWriter(savefilePath)) {
+             fw.write(content);
+         }
+       System.out.println("Done");
+     } catch (IOException ex) {
+         Logger.getLogger(Scrape.class.getName()).log(Level.SEVERE, null, ex);
+     }      
+  }
+
 }

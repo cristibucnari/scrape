@@ -16,7 +16,8 @@ public interface IScrape {
   /**
    * stop the script
    * @param savefilePath location where the file is saved
+   * @param content
    */ 
-  public void save(String savefilePath);
+  public void save(String savefilePath,String content);
   
 }

@@ -6,7 +6,10 @@
 
 package com.scrape.web;
 
+import com.scrape.exceptions.ScrapeException;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -47,7 +50,7 @@ public abstract class AParse implements IScrape, IParseCounter {
   } 
   /**
    * implementation from interface IScrape
-     * @param url
+   * @param url
    */
  @Override
   public String getContent(String url){
@@ -55,20 +58,38 @@ public abstract class AParse implements IScrape, IParseCounter {
          URL urlObject = new URL(url);
          HttpURLConnection openConnection = (HttpURLConnection) urlObject.openConnection();
          openConnection.setRequestMethod(this.requestMethod);
+         //connect to resource
+         openConnection.connect();
+         //
+         int responseCode = openConnection.getResponseCode();
+         if(responseCode != 200) throw new ScrapeException("Parse Exception : "+responseCode);
+         StringBuilder response;
+         //
+         try (BufferedReader bufferReader = new BufferedReader(new InputStreamReader(openConnection.getInputStream()))){
+             //
+             String inputLine;
+             response = new StringBuilder();
+             //
+             while ((inputLine = bufferReader.readLine()) != null) {
+                 response.append(inputLine);
+		}
+           return response.toString(); 
+         }               
+           //System.out.println(response.toString());         
+         
      
      } catch (MalformedURLException ex) {
          Logger.getLogger(AParse.class.getName()).log(Level.SEVERE, null, ex);
      } catch (IOException ex) {
          Logger.getLogger(AParse.class.getName()).log(Level.SEVERE, null, ex);
+     } catch (ScrapeException ex) {
+         Logger.getLogger(AParse.class.getName()).log(Level.SEVERE, null, ex);
      }
    return ""; 
   }
   /**
-   * 
    */
  @Override
-  public void save(String savefilePath){
-  
-  }
+  public abstract void save(String savefilePath,String content);
   
 }
