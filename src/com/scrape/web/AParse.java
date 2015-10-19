@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  * @author  Cristi Bucnari
  */
 public abstract class AParse implements IScrape, IParseCounter {
- private int counter;
+ protected int counter;
  protected String requestMethod="GET";
  
   /**
@@ -80,9 +80,7 @@ public abstract class AParse implements IScrape, IParseCounter {
      
      } catch (MalformedURLException ex) {
          Logger.getLogger(AParse.class.getName()).log(Level.SEVERE, null, ex);
-     } catch (IOException ex) {
-         Logger.getLogger(AParse.class.getName()).log(Level.SEVERE, null, ex);
-     } catch (ScrapeException ex) {
+     } catch (IOException | ScrapeException ex) {
          Logger.getLogger(AParse.class.getName()).log(Level.SEVERE, null, ex);
      }
    return ""; 

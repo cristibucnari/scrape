@@ -28,6 +28,7 @@ public class Scrape extends AParse{
         scrape.save(PATH_OUT_WRITE_FILE+pageName, content);
        }
        System.out.println(content);
+       System.out.println("Count Files : "+scrape.counter);
     }
     /**
      * save the content to a file
