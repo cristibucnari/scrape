@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  * @author  Cristi Bucnari
  */
 public abstract class AParse implements IScrape, IParseCounter {
- protected int counter;
+ private int counter;
  protected String requestMethod="GET";
  
   /**
@@ -73,6 +73,7 @@ public abstract class AParse implements IScrape, IParseCounter {
              while ((inputLine = bufferReader.readLine()) != null) {
                  response.append(inputLine);
 		}
+           counter++;
            return response.toString(); 
          }               
            //System.out.println(response.toString());         

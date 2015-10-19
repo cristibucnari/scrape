@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @author madrid-linux
  */
 public class Scrape extends AParse{
-    static String PATH_OUT_WRITE_FILE = "/YOUR_PATH_WHERE_THE FILE_IS_SAVED/";      
+    static String PATH_OUT_WRITE_FILE = "/home/madrid-linux/share/indeed/";      
     /**
      * @param args the command line arguments
      */
@@ -28,7 +28,7 @@ public class Scrape extends AParse{
         scrape.save(PATH_OUT_WRITE_FILE+pageName, content);
        }
        System.out.println(content);
-       System.out.println("Count Files : "+scrape.counter);
+       System.out.println("Count Files : "+scrape.getCounter());
     }
     /**
      * save the content to a file
