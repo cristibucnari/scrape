@@ -12,9 +12,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
  *
- * @author madrid-linux
+ * @author Cristi Bucnari
  */
 public class Scrape extends AParse{
+
     static String PATH_OUT_WRITE_FILE = "/YOUR/PATH/WHERE/THE/FILE/IS/SAVED/";      
     /**
      * @param args the command line arguments
