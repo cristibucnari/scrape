@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author  Cristi Bucnari
+ * @author  Cristi Bucnari,:
  */
 public abstract class AParse implements IScrape, IParseCounter {
  private int counter;
