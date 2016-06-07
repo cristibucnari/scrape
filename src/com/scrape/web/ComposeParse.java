@@ -10,5 +10,6 @@ package com.scrape.web;
  * @author madrid-linux
  */
 public class ComposeParse {
+   private IScrape iScrape; 
     
 }
