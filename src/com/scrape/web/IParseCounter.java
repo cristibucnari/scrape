@@ -19,6 +19,7 @@ public interface IParseCounter {
  * 
  */
   public void stop();  
+  
 /**
  * 
      * @return  the counter
