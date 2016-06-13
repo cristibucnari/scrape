@@ -4,15 +4,14 @@
  * and open the template in the editor.
  */
 package com.scrape.web;
-
+import com.scrape.exceptions.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
- * Scrape
- * 
+ *
  * @author madrid-linux
  */
 public class Scrape extends AParse{
