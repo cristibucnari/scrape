@@ -11,4 +11,5 @@ package com.scrape.web;
  */
 public interface ParseBehaviuorInterface {
     
+    public String addLink();
 }
