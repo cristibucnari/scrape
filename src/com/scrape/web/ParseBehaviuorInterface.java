@@ -13,5 +13,7 @@ public interface ParseBehaviuorInterface {
     
     public String addLink();
     
-    public String addLink(String link);
+    public String addLink(String link,String info);
+    
+    public String removeLink(String link);
 }
