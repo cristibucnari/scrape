@@ -9,11 +9,6 @@ package com.scrape.web;
  *
  * @author madrid-linux
  */
-public interface ParseBehaviuorInterface {
+public interface UrlInterface {
     
-    public String addLink();
-    
-    public String addLink(String link,String info);
-    
-    public String removeLink(String link);
 }
